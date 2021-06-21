@@ -10,4 +10,5 @@ class MoviesController < ApplicationController
     end
     render json: Movie.find(movie_id)
   end
+
 end

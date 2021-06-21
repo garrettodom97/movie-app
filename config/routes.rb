@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   get "/all_movies" => "movies#all_movies"
   get "/one_movie" => "movies#one_movie"
+
+  get "/actors" => "actors#show"
+  get "/actors/:id" => "actors#show"
+  post "/actors" => "actors#show"
 end
