@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  get "/actor_by_id" => "actors#actor_by_id"
+  get "/movies" => "movies#index"
+  get "/movies/:id" => "movies#show"
+  post "/movies" => "movies#create"
+  delete "movies/:id" => "movies#destroy"
+  patch "movies/:id" => "movies#update"
 
-  get "/all_movies" => "movies#all_movies"
-  get "/one_movie" => "movies#one_movie"
-
-  get "/actors" => "actors#show"
+  get "/actors" => "actors#index"
   get "/actors/:id" => "actors#show"
-  post "/actors" => "actors#show"
+  post "/actors" => "actors#create"
+  delete "actors/:id" => "actors#destroy"
+  patch "actors/:id" => "actors#update"
 end

@@ -1,14 +1,36 @@
 class MoviesController < ApplicationController
-  def all_movies
+  def index
     render json: Movie.all
   end
 
-  def one_movie
-    movie_id = rand(Movie.all.length + 1)
-    if movie_id == 0
-      movie_id = 1
-    end
+  def show
+    movie_id = params[:id]
     render json: Movie.find(movie_id)
   end
 
+  def create
+    movie = Movie.new(
+      title: params[:title],
+      year: params[:year],
+      plot: params[:plot],
+    )
+    movie.save
+    render json: movie.as_json
+  end
+
+  def update
+    movie_id = params[:id]
+    movie = Movie.find(movie_id)
+    movie.title = params[:title] || movie.title
+    movie.year = params[:year] || movie.year
+    movie.plot = params[:plot] || movie.plot
+    render json: movie.as_json
+  end
+
+  def destroy
+    movie_id = params[:id]
+    movie = Movie.find(movie_id)
+    movie.destroy
+    render json: { message: "Movie successfully deleted" }
+  end
 end
