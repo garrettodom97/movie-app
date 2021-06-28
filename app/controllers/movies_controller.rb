@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   def index
-    render json: Movie.all
+    movies = Movie.where("english = ?", true)
+    render json: movies
   end
 
   def show
